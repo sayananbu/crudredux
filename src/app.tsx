@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { Provider } from 'react-redux';
 import MarketPlaceScreen from './components/screen/MarketPlaceScreen/MarketPlaceScreen';
-import {SApp} from "./globalStyles/app.styles";
+import { SApp } from './globalStyles/app.styles';
+import { productsStore } from './store/store';
 
 function App() {
     return (
-        <SApp>
-			<MarketPlaceScreen/>
-        </SApp>
+        <Provider store={productsStore}>
+            <SApp>
+                <MarketPlaceScreen />
+            </SApp>
+        </Provider>
     );
 }
 
-export default App;
+export default memo(App);

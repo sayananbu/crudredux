@@ -1,14 +1,17 @@
 import { FC, memo } from 'react';
-import { SCardDescription, SCardTitle, SImage, SPrice, SProductCard } from './styles/card.styles';
-import { ProductModel } from '../product.model';
+import { SImage, SPrice, SProductCard } from './styles/card.styles';
+import { ProductModel } from '../../../models/product.model';
+import Description from './Description';
+import Title from './Title';
 
 type ProductCardProps = ProductModel;
 const ProductCard: FC<ProductCardProps> = ({ title, price, description, image }) => {
+	const maxLength = 120;
     return (
         <SProductCard>
             <SImage src={image} alt='Something' />
-            <SCardTitle>{title}</SCardTitle>
-            <SCardDescription>{description}</SCardDescription>
+            <Title title={title}/>
+            <Description description={description}/>
             <SPrice>{price}$</SPrice>
         </SProductCard>
     );

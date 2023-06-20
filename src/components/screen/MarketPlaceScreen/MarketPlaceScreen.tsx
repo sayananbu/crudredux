@@ -1,18 +1,25 @@
-import { FC, memo, useState } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { SMarketPlaceScreenContainer } from './styles/marketplacescreen.styles';
 import ProductList from '../../productsList/ProductsList';
-import { ProductModel } from '../../product/product.model';
-import { productListData } from '../../../data/products.data';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
+import useProducts from '../../../hooks/useProducts';
 
 type MarketPlaceScreenProps = {};
 const MarketPlaceScreen: FC<MarketPlaceScreenProps> = () => {
-    const [products, setProducts] = useState<ProductModel[]>(productListData);
+    const { isLoaded, error } = useProducts();
 
-    return (
-        <SMarketPlaceScreenContainer>
-            <ProductList products={products}/>
-        </SMarketPlaceScreenContainer>
-    );
+    const displayDataState = useCallback(() => {
+        return isLoaded ? (
+            <ProductList />
+        ) : error.length ? (
+            <Alert severity='error'>{error}</Alert>
+        ) : (
+            <CircularProgress size={150} />
+        );
+    }, [isLoaded, error]);
+
+    return <SMarketPlaceScreenContainer>{displayDataState()}</SMarketPlaceScreenContainer>;
 };
 
 export default memo(MarketPlaceScreen);

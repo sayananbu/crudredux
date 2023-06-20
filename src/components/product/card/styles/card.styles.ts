@@ -3,20 +3,21 @@ import styled from 'styled-components';
 export const SProductCard = styled.div`
     display: grid;
     grid-template-columns: 25% 55% 20%;
-    grid-template-rows: 40% 60%;
+    grid-template-rows: 50% 50%;
     width: 500px;
-    height: 150px;
+    height: 180px;
     border-radius: 15px;
     box-sizing: border-box;
-    box-shadow: 0 0 10px 1px #000;
+    box-shadow: 0 0 10px 1px #aaa;
     overflow: hidden;
     margin: auto auto;
     transition: 0.2s;
     :hover {
-        box-shadow: 0 0 10px 1px #e09b0e;
+        box-shadow: 0 0 10px 4px #e09b0e;
     }
 	text-align: center;
 	margin: 15px;
+	cursor: pointer;
 `;
 export const SImage = styled.img`
     grid-row: 1 / span 2;
