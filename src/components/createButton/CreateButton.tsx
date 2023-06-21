@@ -1,6 +1,6 @@
 import { FC, memo, MouseEventHandler } from 'react';
 import { SButtonAddItem } from './styles/createbutton.styles';
-import SVGCross from '../svgCross/SVGCross';
+import SVGCross from '../Common/svgCross/SVGCross';
 type CreateButtonProps = {
     handleOpenModal: MouseEventHandler<HTMLDivElement>;
 };

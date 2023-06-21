@@ -1,7 +1,7 @@
 import { FC, memo, useCallback, useMemo, useState } from 'react';
 import { SButtonShowHide, SCardDescription, SCardTitle, SImage, SPrice, SProductCard } from './styles/card.styles';
 import { ProductModel } from '../../../models/product.model';
-import textTrimmer from './utils/textTrimmer';
+import textTrimmer from '../../../utils/textTrimmer';
 
 type ProductCardProps = ProductModel;
 const ProductCard: FC<ProductCardProps> = ({ title, price, description, image }) => {
