@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SProductList = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+`;

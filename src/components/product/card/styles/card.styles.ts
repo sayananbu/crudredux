@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-export const SProductCard = styled.div`
+export const SProductCard = styled.div<{isExpanded:boolean}>`
     display: grid;
     grid-template-columns: 25% 55% 20%;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: ${({isExpanded}) => isExpanded ? 'auto auto' : '50% 50%'};
     width: 500px;
-    height: 180px;
+    height: ${({isExpanded}) => isExpanded ? 'max-content' : '180px'};
     border-radius: 15px;
     box-sizing: border-box;
     box-shadow: 0 0 10px 1px #aaa;
     overflow: hidden;
     margin: auto auto;
-    transition: 0.2s;
+    transition: box-shadow .2s;
     :hover {
         box-shadow: 0 0 10px 4px #e09b0e;
     }
@@ -48,7 +48,7 @@ export const SCardTitle = styled.h3`
 	align-self: center;
 	font-size:1.2rem;
 	line-height: 1;
-	padding: 0 5px;
+	padding: 5px;
 `
 
 export const SCardDescription = styled.p`
@@ -57,6 +57,13 @@ export const SCardDescription = styled.p`
 	margin: 0;
 	align-self: center;
 	font-size:.9rem;
-	line-height: 1.2;
-	padding: 0 5px;
+	line-height: 1.3;
+	padding: 5px;
+`
+export const SButtonShowHide = styled.button`
+font-weight: bold;
+background-color: transparent;
+border-radius: 20px;
+border: 1px solid #f6b42c;
+cursor:pointer;
 `

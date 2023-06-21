@@ -1,17 +1,31 @@
-import { FC, memo } from 'react';
-import { SImage, SPrice, SProductCard } from './styles/card.styles';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
+import { SButtonShowHide, SCardDescription, SCardTitle, SImage, SPrice, SProductCard } from './styles/card.styles';
 import { ProductModel } from '../../../models/product.model';
-import Description from './Description';
-import Title from './Title';
+import textTrimmer from './utils/textTrimmer';
 
 type ProductCardProps = ProductModel;
 const ProductCard: FC<ProductCardProps> = ({ title, price, description, image }) => {
-	const maxLength = 120;
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const maxLen = { title: 70, description: 120 };
+    const trimmedTitle = useMemo(() => textTrimmer(title, maxLen.title), [title, maxLen.title]);
+    const trimmedDescription = useMemo(
+        () => textTrimmer(description, maxLen.description),
+        [description, maxLen.description]
+    );
+    const expandCardInfo = useCallback(() => {
+        setIsExpanded(val => !val);
+    }, []);
+    const isOverflowed = trimmedTitle.localeCompare(title) || trimmedDescription.localeCompare(description);
     return (
-        <SProductCard>
+        <SProductCard isExpanded={isExpanded}>
             <SImage src={image} alt='Something' />
-            <Title title={title}/>
-            <Description description={description}/>
+            <SCardTitle>{isExpanded ? title : trimmedTitle}</SCardTitle>
+            <SCardDescription>
+                {isExpanded ? description : trimmedDescription}{' '}
+                {isOverflowed && (
+                    <SButtonShowHide onClick={expandCardInfo}>{isExpanded ? 'Hide Details' : 'Show Details'}</SButtonShowHide>
+                )}
+            </SCardDescription>
             <SPrice>{price}$</SPrice>
         </SProductCard>
     );
