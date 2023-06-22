@@ -18,7 +18,7 @@ export const productsSlice = createSlice({
         // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(createProductApi.fulfilled, (state: any, action: any) => {
             // Add user to the state array
-            console.log(state, action)
+            console.log('action: ',action)
         });
     },
 });
