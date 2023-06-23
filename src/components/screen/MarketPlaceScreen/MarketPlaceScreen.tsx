@@ -10,7 +10,7 @@ import Loader from '../../loader/Loader';
 type MarketPlaceScreenProps = {};
 const MarketPlaceScreen: FC<MarketPlaceScreenProps> = () => {
     const { isLoaded, error } = useProducts();
-    const [modalIsOpen, setModalIsOpen] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
     const handleOpenModal = useCallback(() => setModalIsOpen(true), []);
     const displayDataState = useCallback(() => {

@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react';
+import { FC, SyntheticEvent, memo, useCallback, useMemo, useState } from 'react';
 import { SButtonShowHide, SCardDescription, SCardTitle, SImage, SPrice, SProductCard } from './styles/card.styles';
 import { ProductModel } from '../../../models/product.model';
 import textTrimmer from '../../../utils/textTrimmer';
@@ -12,7 +12,8 @@ const ProductCard: FC<ProductCardProps> = ({ title, price, description, image })
         () => textTrimmer(description, maxLen.description),
         [description, maxLen.description]
     );
-    const expandCardInfo = useCallback(() => {
+    const expandCardInfo = useCallback((e: SyntheticEvent<EventTarget>) => {
+        e.stopPropagation();
         setIsExpanded(val => !val);
     }, []);
     const isOverflowed = trimmedTitle.localeCompare(title) || trimmedDescription.localeCompare(description);
@@ -23,7 +24,9 @@ const ProductCard: FC<ProductCardProps> = ({ title, price, description, image })
             <SCardDescription>
                 {isExpanded ? description : trimmedDescription}{' '}
                 {isOverflowed && (
-                    <SButtonShowHide onClick={expandCardInfo}>{isExpanded ? 'Hide Details' : 'Show Details'}</SButtonShowHide>
+                    <SButtonShowHide onClick={expandCardInfo} isExpanded={isExpanded}>
+                        {isExpanded ? 'Hide Details' : 'Show Details'}
+                    </SButtonShowHide>
                 )}
             </SCardDescription>
             <SPrice>{price}$</SPrice>

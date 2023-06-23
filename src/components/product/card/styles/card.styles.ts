@@ -49,6 +49,8 @@ export const SCardTitle = styled.h3`
 	font-size:1.2rem;
 	line-height: 1;
 	padding: 5px;
+	word-wrap: break-word;
+	flex:1;
 `
 
 export const SCardDescription = styled.p`
@@ -59,11 +61,12 @@ export const SCardDescription = styled.p`
 	font-size:.9rem;
 	line-height: 1.3;
 	padding: 5px;
+	word-wrap: break-word;
 `
-export const SButtonShowHide = styled.button`
+export const SButtonShowHide = styled.button<{isExpanded:boolean}>`
 font-weight: bold;
 background-color: transparent;
 border-radius: 20px;
-border: 1px solid #f6b42c;
+border: 1px solid ${({isExpanded})=>isExpanded ? '#c72020' : '#f6b42c' };
 cursor:pointer;
 `
