@@ -9,11 +9,11 @@ export const productsSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        setProductsAction: (state, action: PayloadAction<ProductModel[]>) => {
+        setProductsAction(state, action: PayloadAction<ProductModel[]>){
             state.products = action.payload;
         },
         addNewProductAction(state, action: PayloadAction<Omit<ProductModel, 'id'>>) {
-            state.products.unshift({ id: state.products.length + 1, ...action.payload });
+            state.products.unshift({ id: Math.random()*100000 + Math.floor(Math.log10(state.products.length)), ...action.payload });
         },
 		deleteProductAction(state,action:PayloadAction<number>){
 			state.products = state.products.filter((val)=>val.id!==action.payload)

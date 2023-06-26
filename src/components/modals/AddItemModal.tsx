@@ -1,17 +1,9 @@
-import {
-    Button,
-    Dialog,
-    DialogContent,
-    DialogTitle,
-    ModalComponentsPropsOverrides,
-    ModalProps,
-    TextField,
-} from '@mui/material';
-import { ChangeEvent, FC, FormEvent, memo, MouseEventHandler, SyntheticEvent, useCallback, useState } from 'react';
+import { Button, Dialog, DialogContent, DialogTitle, ModalProps, TextField } from '@mui/material';
+import { ChangeEvent, FC, FormEvent, memo, MouseEventHandler, useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { textInputParse } from '../../utils/textInputParse';
 import CloseModalButton from '../closeModalButton/CloseModalButton';
-import { SModalForm } from './styles/additemmodal.styles';
+import { SCloseModalButtonContainer, SModalForm } from './styles/additemmodal.styles';
 import { addNewProductAction } from '../../store/product/product.slice';
 
 type AddItemModalProps = {
@@ -39,11 +31,13 @@ const AddItemModal: FC<AddItemModalProps> = ({ open, handleCloseModal }) => {
                 handleCloseModal({} as Event, 'escapeKeyDown');
             }
         },
-        [titleInput, descriptionInput, dispatch]
+        [titleInput, descriptionInput]
     );
     return (
         <Dialog open={open} onClose={handleCloseModal}>
-            <CloseModalButton handleCloseModal={handleCloseModal as MouseEventHandler<HTMLDivElement>} />
+            <SCloseModalButtonContainer>
+                <CloseModalButton handleCloseModal={handleCloseModal as MouseEventHandler<HTMLDivElement>} />
+            </SCloseModalButtonContainer>
             <DialogTitle>Add new product</DialogTitle>
             <DialogContent>
                 <SModalForm onSubmit={handleFormSubmit}>

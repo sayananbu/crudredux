@@ -17,22 +17,29 @@ import DeleteButton from '../../deleteButton/DeleteButton';
 
 type ProductCardProps = ProductModel;
 const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, image }) => {
+    const dispatch = useDispatch();
+
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
     const maxLen = { title: 70, description: 120 };
+
     const trimmedTitle = useMemo(() => textTrimmer(title, maxLen.title), [title, maxLen.title]);
+
     const trimmedDescription = useMemo(
         () => textTrimmer(description, maxLen.description),
         [description, maxLen.description]
     );
+
     const expandCardInfo = useCallback((e: SyntheticEvent<EventTarget>) => {
         e.stopPropagation();
         setIsExpanded(val => !val);
     }, []);
-    const dispatch = useDispatch();
+
     const handleDeleteProduct = useCallback(() => {
         dispatch(deleteProductAction(id));
     }, [id]);
     const isOverflowed = trimmedTitle.localeCompare(title) || trimmedDescription.localeCompare(description);
+
     return (
         <SProductCard isExpanded={isExpanded}>
             <SImage src={image} alt='Something' />
