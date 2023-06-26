@@ -15,8 +15,11 @@ export const productsSlice = createSlice({
         addNewProductAction(state, action: PayloadAction<Omit<ProductModel, 'id'>>) {
             state.products.unshift({ id: state.products.length + 1, ...action.payload });
         },
+		deleteProductAction(state,action:PayloadAction<number>){
+			state.products = state.products.filter((val)=>val.id!==action.payload)
+		}
     },
 });
 
-export const { setProductsAction, addNewProductAction } = productsSlice.actions;
+export const { setProductsAction, addNewProductAction, deleteProductAction } = productsSlice.actions;
 export default productsSlice.reducer;

@@ -6,4 +6,6 @@ export const SProductList = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
+	@media (max-width:425px){
+	}
 `;
