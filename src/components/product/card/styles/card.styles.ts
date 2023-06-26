@@ -20,7 +20,7 @@ export const SProductCard = styled.div<{ isExpanded: boolean }>`
     cursor: pointer;
     @media (max-width: 425px) {
         grid-template-columns: 30% 70%;
-		grid-template-rows: ${({ isExpanded }) => (isExpanded ? 'auto auto auto' : '30% 50% 20%')};
+        grid-template-rows: ${({ isExpanded }) => (isExpanded ? 'auto auto auto' : '30% 50% 20%')};
         height: ${({ isExpanded }) => (isExpanded ? 'max-content' : '250px')};
     }
 `;
@@ -49,12 +49,20 @@ export const SPrice = styled.span`
     text-align: center;
     font-weight: 700;
     font-size: 1.5rem;
-	@media (max-width: 425px) {
+    @media (max-width: 425px) {
         grid-row: 1;
         grid-column: 2;
     }
 `;
 export const SCardTitle = styled.h3`
+    > a {
+        text-decoration: none;
+        color: black;
+        transition: color 0.2s;
+        :hover {
+            color: #f6b42c;
+        }
+    }
     grid-row: 1;
     grid-column: 2;
     margin: 0;
@@ -64,11 +72,11 @@ export const SCardTitle = styled.h3`
     padding: 5px;
     word-wrap: break-word;
     flex: 1;
-	@media (max-width: 425px) {
-    font-size: 1.05rem;
+    @media (max-width: 425px) {
+        font-size: 1.05rem;
     }
-	@media (max-width: 375px) {
-    font-size: 1rem;
+    @media (max-width: 375px) {
+        font-size: 1rem;
     }
 `;
 
@@ -81,8 +89,8 @@ export const SCardDescription = styled.p`
     line-height: 1.3;
     padding: 5px;
     word-wrap: break-word;
-	@media (max-width: 375px) {
-    font-size: .85rem;
+    @media (max-width: 375px) {
+        font-size: 0.85rem;
     }
 `;
 export const SButtonShowHide = styled.button<{ isExpanded: boolean }>`

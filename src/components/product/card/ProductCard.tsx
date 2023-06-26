@@ -14,6 +14,7 @@ import textTrimmer from '../../../utils/textTrimmer';
 import { deleteProductAction } from '../../../store/product/product.slice';
 import { useDispatch } from 'react-redux';
 import DeleteButton from '../../deleteButton/DeleteButton';
+import { Link } from 'react-router-dom';
 
 type ProductCardProps = ProductModel;
 const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, image }) => {
@@ -43,7 +44,10 @@ const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, imag
     return (
         <SProductCard isExpanded={isExpanded}>
             <SImage src={image} alt='Something' />
-            <SCardTitle>{isExpanded ? title : trimmedTitle}</SCardTitle>
+
+            <SCardTitle>
+                <Link to={`products/${id}`}>{isExpanded ? title : trimmedTitle}</Link>
+            </SCardTitle>
             <SCardDescription>
                 {isExpanded ? description : trimmedDescription}{' '}
                 {isOverflowed && (
