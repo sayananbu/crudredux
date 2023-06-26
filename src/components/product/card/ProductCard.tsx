@@ -43,10 +43,10 @@ const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, imag
 
     return (
         <SProductCard isExpanded={isExpanded}>
-            <SImage src={image} alt='Something' />
+            <SImage src={image} alt='Something'/>
 
             <SCardTitle>
-                <Link to={`products/${id}`}>{isExpanded ? title : trimmedTitle}</Link>
+                <Link to={`../products/${id}`}  >{isExpanded ? title : trimmedTitle}</Link>
             </SCardTitle>
             <SCardDescription>
                 {isExpanded ? description : trimmedDescription}{' '}

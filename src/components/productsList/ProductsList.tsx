@@ -13,7 +13,7 @@ const ProductList: FC<ProductListProps> = () => {
         <Router>
             <Routes>
                 <Route
-                    path='/'
+                    path='/crudredux'
                     element={
                         <SProductList>
                             {products.map(val => (
