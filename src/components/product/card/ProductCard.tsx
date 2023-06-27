@@ -8,7 +8,7 @@ type ProductCardProps = ProductModel;
 const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, image }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-    const maxLen = { title: 70, description: 120 };
+    const maxLen = { title: 80, description: 90 };
 
     const trimmedTitle = useMemo(() => textTrimmer(title, maxLen.title), [title, maxLen.title]);
 

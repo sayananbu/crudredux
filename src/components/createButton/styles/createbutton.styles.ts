@@ -13,6 +13,7 @@ export const SButtonAddItem = styled.div`
 	border: 2px solid #000;
     cursor: pointer;
 	transform: rotate(45deg);
+	backdrop-filter: blur(2px);
 `;
 
 

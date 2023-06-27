@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SProductCard = styled.div<{ isExpanded: boolean }>`
     display: grid;
     grid-template-columns: 25% 55% 20%;
-    grid-template-rows: ${({ isExpanded }) => (isExpanded ? 'auto auto' : '50% 50%')};
+    grid-template-rows: ${({ isExpanded }) => (isExpanded ? 'auto auto' : '65% 35%')};
     width: 500px;
     height: ${({ isExpanded }) => (isExpanded ? 'max-content' : '180px')};
     border-radius: 15px;
