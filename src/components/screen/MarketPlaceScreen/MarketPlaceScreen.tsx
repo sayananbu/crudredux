@@ -6,6 +6,8 @@ import useProducts from '../../../hooks/useProducts';
 import AddItemModal from '../../modals/AddItemModal';
 import CreateButton from '../../createButton/CreateButton';
 import Loader from '../../loader/Loader';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProductViewScreen from '../ProductViewScreen/ProductViewScreen';
 
 type MarketPlaceScreenProps = {};
 const MarketPlaceScreen: FC<MarketPlaceScreenProps> = () => {
@@ -27,7 +29,22 @@ const MarketPlaceScreen: FC<MarketPlaceScreenProps> = () => {
         );
     }, [isLoaded, error, modalIsOpen, handleCloseModal, handleOpenModal]);
 
-    return <SMarketPlaceScreenContainer>{displayDataState()}</SMarketPlaceScreenContainer>;
+	return (
+		<Router>
+            <Routes>
+                <Route
+                    path='/crudredux'
+                    element={
+                        <SMarketPlaceScreenContainer>{displayDataState()}</SMarketPlaceScreenContainer>
+                    }
+                />
+                <Route
+                    path='products/:productId'
+                    element={<ProductViewScreen />}
+                />
+            </Routes>
+        </Router>
+	)
 };
 
 export default memo(MarketPlaceScreen);

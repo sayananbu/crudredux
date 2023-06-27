@@ -39,10 +39,9 @@ export const SImage = styled.img`
     }
 `;
 export const SPrice = styled.span`
-    grid-row: 1;
+    grid-row: 1 / span 2;
     display: grid;
     align-content: center;
-    grid-row: 1;
     width: 100%;
     height: 100%;
     background-color: #f6b42c;
@@ -50,8 +49,8 @@ export const SPrice = styled.span`
     font-weight: 700;
     font-size: 1.5rem;
     @media (max-width: 425px) {
-        grid-row: 1;
-        grid-column: 2;
+        grid-row: 3;
+        grid-column: 1 / span 2;
     }
 `;
 export const SCardTitle = styled.h3`
@@ -109,19 +108,5 @@ export const SDeleteButtonContainer = styled.div`
     @media (max-width: 425px) {
         grid-row: 1;
         grid-column: 1;
-    }
-`;
-export const SPriceContainer = styled.div`
-    grid-column: 3;
-    grid-row: 1 / span 2;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 70% 30%;
-    background-color: #f6b42c;
-    @media (max-width: 425px) {
-        grid-row: 3;
-        grid-column: 1 / span 2;
-        grid-template-rows: 100%;
-        grid-template-columns: 30% 70%;
     }
 `;
