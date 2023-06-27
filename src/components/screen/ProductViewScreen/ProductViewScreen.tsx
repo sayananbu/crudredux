@@ -43,7 +43,7 @@ const ProductViewScreen: FC<ProductViewScreenProps> = () => {
                     <SFullTitle>{product.title}</SFullTitle>
                     <SFullDescription>{product.description}</SFullDescription>
                     <SFooterContainer>
-                        <SFullPrice>{product.price}</SFullPrice>
+                        <SFullPrice>{product.price}$</SFullPrice>
                         <SFullDeleteButtonContainer>
                             <DeleteButton handleDelete={handleDeleteProduct} />
                         </SFullDeleteButtonContainer>
