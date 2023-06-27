@@ -23,8 +23,8 @@ export const SImageView = styled.img`
     grid-column: 1;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    width: 70%;
-    height: 70%;
+    width: 50%;
+    height: 50%;
     object-fit: contain;
 	@media (max-width:425px) {
 		grid-row: 1;
